@@ -9,7 +9,8 @@ describe('RWA Historic Tests', () => {
      loginConfirmation: '[data-test="sidenav-home"]',
      personalButton: '[data-test="nav-personal-tab"]',        
      alertNoTransactions: '[data-test="empty-list-header"]',
-     transactionPaid: '[data-test="transaction-action-0fFsO3z-n"]',
+     transactionPaid: '[style="height: 128px; left: 0px; position: absolute; top: 0px; width: 100%;"]',
+     
     }
 
 

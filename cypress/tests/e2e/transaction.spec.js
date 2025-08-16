@@ -9,7 +9,7 @@ describe('RWA Transactions Tests', () => {
      loginConfirmation: '[data-test="sidenav-home"]',
      errorAlert: '[data-test="signin-error"]',
      newTransactionButton: '[data-test="nav-top-new-transaction"]',
-     contactSelect: '[data-test="user-list-item-bWthly0Cu"]',
+     contactSelect: '[data-test="user-list-item-uBmeaz5pX"]',
      amountField: '#amount',
      noteTransactionFiled: '#transaction-create-description-input',
      submitPaymentButton: '[data-test="transaction-create-submit-payment"]',
