@@ -1,57 +1,49 @@
+import userData from '../../fixtures/user-data.json' 
+import RegisterPage from '../../pages/registerPage'
 
+const registerPage = new RegisterPage()
 
 describe('RWA Register Tests', () => {
-  
-    const selectorsList={
-     firstNameField: '#firstName',
-     lastNameField: '#lastName',
-     usernameField: '#username',
-     passwordField: '#password',
-     passwordConfirmField: '#confirmPassword',
-     submitButton: '[data-test="signup-submit"]',
-     confirmation: '.MuiTypography-h5',
-     passwordErrorAlert: '#confirmPassword-helper-text', 
-     nameErrorAlert: '#firstName-helper-text',
-     usernameAlert: '#username-helper-text',
-    }
-
 
    it('Campos obrigatórios preenchidos', () => {
-     cy.visit('http://localhost:3000/signup');
-     cy.get(selectorsList.firstNameField).type('Paulo');
-     cy.get(selectorsList.lastNameField).type('Roberto');
-     cy.get(selectorsList.usernameField).type('paulinho');
-     cy.get(selectorsList.passwordField).type('123456');
-     cy.get(selectorsList.passwordConfirmField).type('123456');
-     cy.get(selectorsList.submitButton).click();
-     cy.get(selectorsList.confirmation).contains('Sign in');
+     registerPage.accessRegisterPage();
+     registerPage.registerNewUser(
+      userData.userRegister.firstName, 
+      userData.userRegister.lastName, 
+      userData.userRegister.username, 
+      userData.userRegister.password, 
+      userData.userRegister.confirmPassword);
+     registerPage.submitButtonClick();
+     registerPage.registerConfirmation();
   });
 
    it('Campo senha vazio', () => {
-     cy.visit('http://localhost:3000/signup');
-     cy.get(selectorsList.firstNameField).type('Paulo');
-     cy.get(selectorsList.lastNameField).type('Roberto');
-     cy.get(selectorsList.usernameField).type('paulinho');
-     cy.get(selectorsList.passwordConfirmField).type('123456'); 
-     cy.get(selectorsList.passwordErrorAlert).contains('Password does not match');
+     registerPage.accessRegisterPage();
+     registerPage.registerWithEmptyPassword(
+      userData.userRegister.firstName, 
+      userData.userRegister.lastName, 
+      userData.userRegister.username, 
+      userData.userRegister.confirmPassword);
+     registerPage.registerPasswordError();
   });
 
    it('Campo nome vazio', () => {
-     cy.visit('http://localhost:3000/signup');
-     cy.get(selectorsList.lastNameField).type('Roberto');
-     cy.get(selectorsList.usernameField).type('paulinho');
-     cy.get(selectorsList.passwordField).type('123456');
-     cy.get(selectorsList.passwordConfirmField).type('123456');
-     cy.get(selectorsList.nameErrorAlert).contains('First Name is required');
+     registerPage.accessRegisterPage(); 
+     registerPage.registerWithEmptyName(
+      userData.userRegister.lastName, 
+      userData.userRegister.username, 
+      userData.userRegister.password, 
+      userData.userRegister.confirmPassword);
+     registerPage.registerFirstNameError();
   });
 
    it('Nome de usuário vazio', () => {
-     cy.visit('http://localhost:3000/signup');
-     cy.get(selectorsList.firstNameField).type('Paulo');
-     cy.get(selectorsList.lastNameField).type('Roberto');
-     cy.get(selectorsList.usernameField).click();
-     cy.get(selectorsList.passwordField).type('123456');
-     cy.get(selectorsList.passwordConfirmField).type('123456');
-     cy.get(selectorsList.usernameAlert).contains('Username is required');
+     registerPage.accessRegisterPage();
+     registerPage.registerWithEmptyUsername(
+      userData.userRegister.firstName, 
+      userData.userRegister.lastName, 
+      userData.userRegister.password, 
+      userData.userRegister.confirmPassword);
+     registerPage.registerUsernameError();
   });
 });
