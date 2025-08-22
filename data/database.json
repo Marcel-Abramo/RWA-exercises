@@ -118,6 +118,17 @@
       "balance": 0,
       "createdAt": "2025-08-19T16:35:27.777Z",
       "modifiedAt": "2025-08-19T16:35:27.777Z"
+    },
+    {
+      "id": "um7AadlOC",
+      "uuid": "9186f336-b72d-4bc5-bf5e-f9bb83370a38",
+      "firstName": "Marcel",
+      "lastName": "QA",
+      "username": "marcelqa",
+      "password": "$2a$10$TKURNo6pne1LvOKmqf9gVuUbV9PYVvAj37Bs0wCsXcNtbm9VHKW8S",
+      "balance": 0,
+      "createdAt": "2025-08-22T23:03:35.730Z",
+      "modifiedAt": "2025-08-22T23:03:35.730Z"
     }
   ],
   "contacts": [
